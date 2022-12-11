@@ -25,13 +25,20 @@ class TimeMap {
         
     }
     public String find(int timestamp, List<Pair<String, Integer>> list){
-        // int high;
-        for(int i=list.size()-1; i>=0; i--){
-            if(list.get(i).getValue() <= timestamp){
-                return list.get(i).getKey();
+        int high=list.size()-1;
+        int low=0;
+        String last="";
+        while(low<=high){
+            int mid=(low + high)/2;
+            if(list.get(mid).getValue()<=timestamp){
+                last=list.get(mid).getKey();
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
             }
         }
-        return "";
+        return last;
     }
                     
                     
