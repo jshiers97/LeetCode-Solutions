@@ -22,7 +22,6 @@ class Solution {
             }
             else{
                 
-                
                 if(oneCount==0){
                         one=nums[i];
                         oneCount=1;
@@ -36,6 +35,9 @@ class Solution {
                         twoCount--;
                     }
             }
+                
+                
+            
         }
         
         if(oneCount > twoCount){
