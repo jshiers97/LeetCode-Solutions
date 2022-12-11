@@ -23,16 +23,7 @@ class Solution {
             else{
                 
                 
-                if(one==nums[i]){
-                    //System.out.println("here");
-                    oneCount++;
-                    //System.out.println(oneCount);
-                }
-                else if(two==nums[i]){
-                    twoCount++;
-                }
-                else{
-                    if(oneCount==0){
+                if(oneCount==0){
                         one=nums[i];
                         oneCount=1;
                     }
@@ -44,10 +35,9 @@ class Solution {
                         oneCount--;
                         twoCount--;
                     }
-                }
             }
         }
-        //System.out.println(oneCount);
+        
         if(oneCount > twoCount){
             return one;
         }
