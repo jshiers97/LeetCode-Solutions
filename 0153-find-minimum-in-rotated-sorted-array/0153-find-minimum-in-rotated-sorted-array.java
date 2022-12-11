@@ -8,8 +8,7 @@ class Solution {
         }
         int left=0;
         int right=nums.length-1;
-        int min=Integer.MAX_VALUE;
-        int minIndex=-1;
+       
         while(left <= right){
             
             int mid=(right+left)/2;
