@@ -13,7 +13,7 @@ class Solution {
         while(left <= right){
             
             int mid=(right+left)/2;
-            System.out.println(mid);
+   
             if(mid==0){
                 if(nums[mid+1] > nums[mid]){
                     return nums[mid];
@@ -23,13 +23,12 @@ class Solution {
             }
             else if(mid==nums.length-1 && nums[mid-1] > nums[mid]){
                 return nums[mid];
-
             }
             else if(nums[mid] < nums[mid-1] && nums[mid] < nums[mid+1]){
                 return nums[mid];
             }
             else if(nums[mid] >= nums[left] && nums[mid] > nums[right]){
-                System.out.println("here");
+                
                 left=mid+1;
             }
             else if(nums[mid]  > nums[left] && nums[mid] < nums[right]){
@@ -38,9 +37,6 @@ class Solution {
             else if(nums[mid] <= nums[right] && nums[left] > nums[mid]){
                 right=mid-1;
             }
-            
-            
-            //System.out.println("here");
             
         }
         return -1;
