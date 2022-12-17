@@ -7,7 +7,7 @@ class Solution {
         for(int i=1; i<colors.length(); i++){
             char curr=colors.charAt(i);
             if(curr==prev){
-                System.out.println(i);
+                
                 if(neededTime[i] >= neededTime[prevI]){
                     min+=neededTime[prevI];
                     prevI=i;
