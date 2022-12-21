@@ -17,10 +17,7 @@ class Solution {
             int Aright= (mid+1>=0 && (mid+1)<nums1.length) ? nums1[mid+1] : Integer.MAX_VALUE;
             int Bleft= (otherMid>=0 && otherMid<nums2.length) ? nums2[otherMid] : Integer.MIN_VALUE;
             int Bright=(otherMid+1>=0 && otherMid+1<nums2.length) ? nums2[otherMid+1] : Integer.MAX_VALUE;
-            // System.out.println(Aleft);
-            // System.out.println(Aright);
-            // System.out.println(Bleft);
-            // System.out.println(Bright);
+        
 
             if(Aleft <= Bright && Bleft<= Aright){
                 if(odd){
