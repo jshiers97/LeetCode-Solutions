@@ -1,5 +1,5 @@
 
-    class Solution {
+class Solution {
     public String smallestSubsequence(String s) {
         Stack<Character> stack=new Stack<>();
         HashSet<Character> seen=new HashSet<>();
