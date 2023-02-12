@@ -17,11 +17,11 @@ class MedianFinder {
     public double findMedian() {
         
         if((minHeap.size() + maxHeap.size() ) %2 ==1){
-            System.out.println("here1");
+            
             return (double) minHeap.peek(); 
         }
         else{
-            System.out.println("here");
+            
             return (double) (maxHeap.peek() + minHeap.peek() )/2.0; 
             
         }
