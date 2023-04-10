@@ -25,8 +25,7 @@ class Solution {
                 count2--;
             }
             
-            System.out.println(first);
-            System.out.println(second); 
+          
         }
         
         count1=0;
