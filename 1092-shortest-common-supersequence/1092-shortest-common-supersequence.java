@@ -22,6 +22,7 @@ class Solution {
                 }
             }
         }
+        
         StringBuilder sb = new StringBuilder();
         int i = m, j = n;
         while(i>0 && j>0){
@@ -39,7 +40,6 @@ class Solution {
                 j--;
             }
         }
-        
         // if there are any remaining characters in either str1 or str2,
         // we need to add them to the supersequence
         while (i > 0) {
