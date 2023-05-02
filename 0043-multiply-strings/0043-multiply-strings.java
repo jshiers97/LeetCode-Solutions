@@ -22,30 +22,23 @@ class Solution {
                 
                 carry=prod/10;
                 prod%=10;
-                System.out.println(prod);
+                
                 curr.add(0, prod); 
             }
             if(carry>0){
-                System.out.println("HEREEE");
+                
                 curr.add(0, carry); 
             }
             
+           
             
-            for(int i=0; i<curr.size(); i++){
-                System.out.print(curr.get(i)); 
-                
-            }
-            System.out.println("next1");
             output=add(curr, output); 
             curr=new ArrayList<>(); 
             
             
             zeroes++;
-            for(int i=0; i<output.size(); i++){
-                System.out.print(output.get(i)); 
-                
-            }
-            System.out.println("next");
+            
+          
         }
         StringBuilder out=new StringBuilder(); 
         for(int i=0; i<output.size();i++){
