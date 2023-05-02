@@ -21,13 +21,10 @@ class Solution {
         }
         StringBuilder output=new StringBuilder(); 
         
-        while(!stack.isEmpty()){
+        for(String dir: stack){
+            output.append("/");
+            output.append(dir);
             
-            output.insert(0, stack.pop());
-            output.insert(0, "/");
-            
-            
-        
         }
         if(output.length()==0){
             return "/";
