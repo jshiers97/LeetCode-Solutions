@@ -20,11 +20,9 @@ class Solution {
             }
         }
         list.add(currNum.toString());
-        for(String x: list){
-            //System.out.println(x);
-        }
+        
         List<String> l2=new ArrayList<>(); 
-        //int num=Integer.parseInt(list.get(0)); 
+       
         for(int i=0; i<list.size(); i++){
             String curr=list.get(i); 
             if(curr.equals("*")){
