@@ -61,7 +61,7 @@ class Solution {
             Node p=head;
             Node n=head.next;
             boolean first=true;
-            System.out.println("here");
+           
             while(p!=head || first){
                 if(p==head){
                     first=false;
