@@ -87,12 +87,12 @@ class Solution {
         while(p.val!=max){
             p=p.next;
         }
-        System.out.println(p.val);
+       
         while(p.next.val==max){
             p=p.next;
             
         }
-         System.out.println(p.val);
+        
         Node adding=new Node(insertVal);
         Node temp=p.next;
         p.next=adding;
