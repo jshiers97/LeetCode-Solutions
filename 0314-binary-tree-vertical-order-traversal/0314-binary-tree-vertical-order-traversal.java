@@ -25,7 +25,7 @@ class Solution {
         this.left=left;
         this.right=right;
         
-        traverse(root, 0, 0); 
+        traverse(root, 0); 
         //System.out.println(right); 
         for(int i=left; i<=right; i++){
             map.put(i, new ArrayList<>()); 
@@ -47,25 +47,28 @@ class Solution {
             
         }
         for(int i=left; i<=right; i++){
-            if(map.get(i).size()==0){
-                continue;
-            }
+            //if(map.get(i).size()==0){
+               // continue;
+           // }
             list.add(map.get(i)); 
         }
         return list; 
         
         
     }
-    public void traverse(TreeNode curr, int l, int r){
-        left=Math.min(l, left);
-        right=Math.max(r, right); 
+    public void traverse(TreeNode curr, int pos){
+        left=Math.min(left, pos);
+        right=Math.max(pos, right); 
+       // System.out.println(left); 
         //System.out.println(curr.val); 
         if(curr.left!=null){
-            traverse(curr.left, l-1, r); 
+            //System.out.println(l-1);
+            traverse(curr.left, pos-1); 
         }
         if(curr.right!=null){
-            traverse(curr.right, l,  r+1); 
+            traverse(curr.right, pos+1); 
         }
+        
         return; 
     }
 }
