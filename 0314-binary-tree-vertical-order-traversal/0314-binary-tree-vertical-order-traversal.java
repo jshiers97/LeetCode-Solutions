@@ -26,7 +26,7 @@ class Solution {
         this.right=right;
         
         traverse(root, 0, 0); 
-        System.out.println(right); 
+        //System.out.println(right); 
         for(int i=left; i<=right; i++){
             map.put(i, new ArrayList<>()); 
         }
@@ -59,7 +59,7 @@ class Solution {
     public void traverse(TreeNode curr, int l, int r){
         left=Math.min(l, left);
         right=Math.max(r, right); 
-        System.out.println(curr.val); 
+        //System.out.println(curr.val); 
         if(curr.left!=null){
             traverse(curr.left, l-1, r); 
         }
