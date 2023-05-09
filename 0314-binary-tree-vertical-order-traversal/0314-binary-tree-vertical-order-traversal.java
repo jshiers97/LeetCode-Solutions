@@ -26,12 +26,12 @@ class Solution {
         this.right=right;
         
         traverse(root, 0); 
-        //System.out.println(right); 
+        
         for(int i=left; i<=right; i++){
             map.put(i, new ArrayList<>()); 
         }
         Queue<Pair<TreeNode, Integer>> q=new LinkedList<>(); 
-        //Pair<TreeNode, Integer> temp=new Pair<>(q, 0); 
+       
         q.offer(new Pair<TreeNode, Integer>(root, 0));
         while(!q.isEmpty()){
             Pair<TreeNode, Integer> p=q.poll(); 
@@ -47,9 +47,7 @@ class Solution {
             
         }
         for(int i=left; i<=right; i++){
-            //if(map.get(i).size()==0){
-               // continue;
-           // }
+            
             list.add(map.get(i)); 
         }
         return list; 
@@ -59,10 +57,9 @@ class Solution {
     public void traverse(TreeNode curr, int pos){
         left=Math.min(left, pos);
         right=Math.max(pos, right); 
-       // System.out.println(left); 
-        //System.out.println(curr.val); 
+       
         if(curr.left!=null){
-            //System.out.println(l-1);
+            
             traverse(curr.left, pos-1); 
         }
         if(curr.right!=null){
