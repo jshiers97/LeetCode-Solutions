@@ -4,7 +4,7 @@ class Solution {
         currr.append(num); 
         String temp=currr.toString(); 
         for(int i=0; i<temp.length(); i++){
-            System.out.println(i); 
+            
             int curr=Character.getNumericValue(temp.charAt(i)); 
             int max=curr;
             int index=-1; 
