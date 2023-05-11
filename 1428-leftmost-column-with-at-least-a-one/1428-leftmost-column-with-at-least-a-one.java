@@ -28,11 +28,11 @@ class Solution {
         for(int x: rs){
             int left=0;
             right=min;
-            System.out.println(x + "rowa"); 
+            
             while(left <= right){
                 int mid=(left+right)/2;
                 if(binaryMatrix.get(x, mid)==1){
-                    System.out.println(mid);
+                   
                     min=Math.min(mid, min); 
                     right=mid-1;
                 }
