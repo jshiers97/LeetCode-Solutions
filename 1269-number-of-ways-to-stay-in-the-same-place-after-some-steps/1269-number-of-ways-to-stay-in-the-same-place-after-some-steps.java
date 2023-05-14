@@ -1,11 +1,11 @@
 class Solution {
     long mod=1000000007;
-    long test=-1;
+   
     public int numWays(int steps, int arrLen) {
         int min=Math.min(steps, arrLen);
         long[][] dp=new long[steps+1][min+1];
         for(long[] arr: dp){
-            Arrays.fill(arr, test); 
+            Arrays.fill(arr, -1); 
         }
         
         return (int)recurse(steps, 0, min, 0, dp);
@@ -19,7 +19,7 @@ class Solution {
             return 0;
         }
         
-        if(dp[step][index]!=test){
+        if(dp[step][index]!=-1){
             return dp[step][index];
         }
         
