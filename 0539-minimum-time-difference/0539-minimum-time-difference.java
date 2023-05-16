@@ -6,7 +6,7 @@ class Solution {
                 Integer h1=Integer.parseInt(x.split(":")[0]);
                 Integer h2=Integer.parseInt(y.split(":")[0]);
                 int hour=h1.compareTo(h2); 
-            //System.out.println(hour); 
+           
                 if(hour!=0){
                     return hour;
                 }
@@ -34,7 +34,7 @@ class Solution {
                 int hourDiff;
                 int minDiff;
                 if((h2-h1)%24  <   24 -(h2-h1)){
-                    System.out.println("test" + h1);
+                    
                     hourDiff=(h2-h1)%24 ;
                     
                     if(m2>=m1){
@@ -56,15 +56,15 @@ class Solution {
                     }
                 }
                 else{
-                    System.out.println("here11");
+                    
                     hourDiff= 24 -(h2-h1);
-                    System.out.println(hourDiff);
+                   
                     if(m2>m1){
                         hourDiff--;
                         minDiff=60-(m2-m1);
                     }
                     else{
-                        System.out.println("here12");
+                        
                         minDiff=m1-m2;
                     }
                 }
@@ -86,7 +86,7 @@ class Solution {
                 int hourDiff;
                 int minDiff;
                 if((h2-h1)%24  <   24 -(h2-h1)){
-                    System.out.println("test" + h1);
+                    
                     hourDiff=(h2-h1)%24 ;
                     
                     if(m2>=m1){
@@ -108,15 +108,15 @@ class Solution {
                     }
                 }
                 else{
-                    System.out.println("here11");
+                   
                     hourDiff= 24 -(h2-h1);
-                    System.out.println(hourDiff);
+                    
                     if(m2>m1){
                         hourDiff--;
                         minDiff=60-(m2-m1);
                     }
                     else{
-                        System.out.println("here12");
+                        
                         minDiff=m1-m2;
                     }
                 }
