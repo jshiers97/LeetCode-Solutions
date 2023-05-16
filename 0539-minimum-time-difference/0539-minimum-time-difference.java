@@ -9,7 +9,7 @@ class Solution {
                 Integer h1=Integer.parseInt(x.split(":")[0]);
                 Integer h2=Integer.parseInt(y.split(":")[0]);
                 int hour=h1.compareTo(h2); 
-            //System.out.println(hour); 
+           
                 if(hour!=0){
                     return hour;
                 }
@@ -81,8 +81,7 @@ class Solution {
                     }
                 }
 
-                //int minDiff=Math.min((m2-m1) % 60, 60 - (m2-m1));
-                //int hourDiff=Math.min((h2-h1)%24, 24 - (h2-h1));
+             
                 minDiff+= (hourDiff*60);
                 minimum=Math.min(minimum, minDiff); 
     }
