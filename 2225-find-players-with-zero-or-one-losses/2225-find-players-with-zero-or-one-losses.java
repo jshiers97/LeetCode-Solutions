@@ -3,7 +3,7 @@ class Solution {
         List<List<Integer>> output=new ArrayList<>();
         output.add(new ArrayList<>());
         output.add(new ArrayList<>()); 
-        int[] players=new int[1000002];
+        int[] players=new int[100002];
         Arrays.fill(players, -1);
         for(int[] match: matches){
             int winner=match[0];
