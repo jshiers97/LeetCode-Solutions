@@ -46,7 +46,7 @@ class Solution {
                 int hourDiff;
                 int minDiff;
                 if((h2-h1)%24  <   24 -(h2-h1)){
-                    System.out.println("test" + h1);
+                    
                     hourDiff=(h2-h1)%24 ;
                     
                     if(m2>=m1){
@@ -68,15 +68,15 @@ class Solution {
                     }
                 }
                 else{
-                    System.out.println("here11");
+                   
                     hourDiff= 24 -(h2-h1);
-                    System.out.println(hourDiff);
+                  
                     if(m2>m1){
                         hourDiff--;
                         minDiff=60-(m2-m1);
                     }
                     else{
-                        System.out.println("here12");
+                       
                         minDiff=m1-m2;
                     }
                 }
