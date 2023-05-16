@@ -23,7 +23,7 @@ class Solution {
         //System.out.println(first); 
         int temp=0;
         for(int i=0; i<root.length; i++){
-            System.out.println(root[i]);
+            //System.out.println(root[i]);
             if(!unique.contains(root[i])){
                 unique.add(root[i]);
                 temp++;
