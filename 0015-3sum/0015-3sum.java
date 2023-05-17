@@ -8,7 +8,7 @@ class Solution {
                 continue;
             }
             dupes.add(nums[i]);         
-            Map<Integer, Integer> map=new HashMap<>(); 
+            
             Set<Integer> set=new HashSet<>(); 
             for(int j=i+1; j<nums.length; j++){
                 int complement=target - nums[j];
