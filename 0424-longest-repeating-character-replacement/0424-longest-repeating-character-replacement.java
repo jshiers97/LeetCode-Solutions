@@ -1,43 +1,25 @@
 class Solution {
     public int characterReplacement(String s, int k) {
-        Map<Character, Integer> map=new HashMap<>(); 
-        for(int i=0; i<s.length(); i++){
-            char c=s.charAt(i); 
-            if(!map.containsKey(c)){
-                map.put(c, 0);
+        int left=0;
+        int[] frequencyMap=new int[26];
+        int maxFrequency=0;
+        int longestSubstringLength=0; 
+        for(int end=0; end<s.length(); end++){
+            int currChar=s.charAt(end)-'A';
+            frequencyMap[currChar]++;
+            maxFrequency=Math.max(maxFrequency, frequencyMap[currChar]);
+            boolean isValid=(end+1 - left - maxFrequency<= k);
+            if(!isValid){
+                int outgoingChar=s.charAt(left)-'A'; 
+                frequencyMap[outgoingChar] -= 1;
+
+                // move the start pointer forward
+                left += 1;
             }
-        }
-        for(char c: map.keySet()){
-            int left=0;
-            int right=0;
-            int curr=0;
-            int off=0;
-            while(right<s.length()){
-                if(s.charAt(right)==c){
-                    right++;
-                    curr++;
-                }
-                else{
-                    right++;
-                    off++;
-                    curr++;
-                }
-                while(off>k){
-                    char d=s.charAt(left);
-                    if(d!=c){
-                        off--;
-                    }
-                    curr--;
-                    left++;
-                }
-                map.put(c, Math.max(map.get(c), curr)); 
+            longestSubstringLength=end+1-left; 
                 
-            }
+            
         }
-        int max=0;
-         for(char c: map.keySet()){
-             max=Math.max(max, map.get(c));
-         }
-        return max; 
+        return longestSubstringLength;
     }
 }
