@@ -1,37 +1,31 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        Arrays.sort(nums); 
-        List<List<Integer>> output=new ArrayList<>(); 
+        Set<List<Integer>> output=new HashSet<>(); 
+        Set<Integer> dupes=new HashSet<>();
+        Map<Integer, Integer> map=new HashMap<>(); 
         for(int i=0; i<nums.length-2; i++){
-            if(nums[i] > 0){
-                return output; 
-            }
-            else if(i>0 && nums[i]==nums[i-1]){
-                continue;
-            }
-            else{
-                twoSum(nums, i, output); 
-            }
-        }
-        return output; 
-    }
-    public void twoSum(int[] nums, int i, List<List<Integer>> output){
-        Set<Integer> set=new HashSet<>(); 
-        int target=0 - nums[i];
-        for(int j=i+1; j<nums.length; j++){
-            int complement=-nums[j]-nums[i];
-            if(set.contains(complement)){
-                List<Integer> insert=new ArrayList<>();
-                insert.add(nums[i]);
-                insert.add(complement);
-                insert.add(nums[j]);
-                output.add(insert); 
-                while(j+1 < nums.length && nums[j]==nums[j+1]){
-                    j++; 
-                }
-            }
-            set.add(nums[j]);
+            int target=-nums[i];
+            if(dupes.add(nums[i])){
+                
             
+                
+            
+            //Set<Integer> set=new HashSet<>(); 
+            for(int j=i+1; j<nums.length; j++){
+                int complement=-nums[i] - nums[j];
+                if(map.containsKey(complement) && map.get(complement)==i){
+                    List<Integer> insert=new ArrayList<>();
+                    insert.add(nums[i]);
+                    insert.add(complement);
+                    insert.add(nums[j]);
+                    Collections.sort(insert);
+                    output.add(insert);
+                }
+                map.put(nums[j], i); 
+            }
+            }
         }
+        return new ArrayList(output);
     }
+    
 }
