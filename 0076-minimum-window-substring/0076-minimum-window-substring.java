@@ -27,7 +27,7 @@ class Solution {
             if(have[c-'A']==needed[c-'A']){
                 haveCount++;
             }
-            System.out.println(right + "right is");
+            
             while(haveCount==needCount){
                
                 
