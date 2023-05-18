@@ -9,36 +9,24 @@ class Node {
 */
 
 class Solution {
-    List<Node> list;
     public Node inorderSuccessor(Node node) {
-        int val=node.val;
-        Node temp=node;
-        while(node.parent!=null){
-            node=node.parent; 
-        }
-        this.list=new ArrayList<>(); 
-        recurse(node, val); 
-        for(int i=0; i<list.size(); i++){
-            if(list.get(i)==temp){
-                if(i+1<list.size()){
-                    return list.get(i+1);
-                }
-                else{
-                    return null;
+        int temp=node.val;
+        if(node.right==null){
+            while(node.parent!=null){
+                node=node.parent;
+                if(node.val > temp){
+                    return node;
                 }
             }
+            if(node.val <= temp){
+                return null; 
+            }
+            return node; 
         }
-        return null; 
-    }
-    public void recurse(Node node, int val){
-        if(node==null){
-            return;
-            
+        node=node.right;
+        while(node.left!=null){
+            node=node.left;
         }
-        recurse(node.left, val);
-        list.add(node);
-        recurse(node.right, val);
-        return;
-        
+        return node; 
     }
 }
