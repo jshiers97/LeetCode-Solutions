@@ -26,20 +26,20 @@ class Solution {
         count/=2;
         
         l1=sent1;
-        System.out.println(count); 
+       
         for(int i=0; i<count; i++ ){
             l1=l1.next;
         }
         l2=l1.next;
         l1.next=null;
         sent2=l2;
-        //System.out.println(sent1.next.val);
+        
         Stack<ListNode> stack=new Stack<>();
         while(sent2!=null){
             stack.push(sent2);
             sent2=sent2.next;
         }
-        //System.out.println(stack.peek().val);
+        
         while(sent1!=null){
             ListNode temp=sent1.next;
             if(temp==null){
