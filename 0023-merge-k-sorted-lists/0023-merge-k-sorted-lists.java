@@ -16,7 +16,7 @@ class Solution {
         if(lists.length==1){
             return lists[0]; 
         }
-        System.out.println(lists.length); 
+       
         ListNode sentinel=new ListNode(-1);
         ListNode head=sentinel;
         int min=100001; 
@@ -37,7 +37,7 @@ class Solution {
             if(min==100001){
                 return sentinel.next;
             }
-            //System.out.println(min); 
+            
             head.next=insert;
             head=head.next;
             ListNode shift=lists[minIndex];
