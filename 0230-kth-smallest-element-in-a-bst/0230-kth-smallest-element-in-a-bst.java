@@ -28,7 +28,7 @@ class Solution {
         recurse(curr.left, k); 
         count++;
         if(count==k){
-            System.out.println(curr.val); 
+           
             ret=curr.val;
             
 
