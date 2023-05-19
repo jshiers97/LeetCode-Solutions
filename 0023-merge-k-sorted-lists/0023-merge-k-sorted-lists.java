@@ -47,7 +47,7 @@ class Solution {
             }
             shift=shift.next;
             lists[minIndex]=shift;
-            //System.out.println(empty); 
+           
             min=100001;
             minIndex=-1;
         }
