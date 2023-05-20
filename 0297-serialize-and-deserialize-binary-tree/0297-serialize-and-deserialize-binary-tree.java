@@ -35,9 +35,7 @@ public class Codec {
     public TreeNode deserialize(String data) {
         
         String[] arr=data.split("#");
-        //String first=arr[0];
-        //if()
-        //int first=Integer.parseInt(arr[0]);
+        
         return reconstruct(arr); 
     }
     public TreeNode reconstruct(String[] arr){
