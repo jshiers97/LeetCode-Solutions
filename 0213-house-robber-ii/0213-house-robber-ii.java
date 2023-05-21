@@ -21,10 +21,7 @@ class Solution {
         dp2[0]=nums[1];
         dp2[1]=nums[2];
         int max1=rob1(nums1, dp1);
-        for(int x: nums2){
-            System.out.println(x); 
-        }
-        //System.out.println(max1); 
+        
         int max2=rob1(nums2, dp2);
         return Math.max(max1, max2); 
     }
@@ -44,7 +41,7 @@ class Solution {
             int skip=dp[i-2] + nums[i];
             dp[i]=Math.max(take, skip); 
         }
-       // System.out.println(dp[nums.length-1]); 
+      
         return Math.max(dp[nums.length-1], dp[nums.length-2]);
     }
 }
