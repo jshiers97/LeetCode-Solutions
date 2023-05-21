@@ -3,7 +3,7 @@ class Solution {
     int[] nums;
     public int rob(int[] nums) {
         this.dp=new int[nums.length];
-        Arrays.fill(dp, -1); 
+        //Arrays.fill(dp, -1); 
         if(nums.length ==1){
             return nums[0];
         }
