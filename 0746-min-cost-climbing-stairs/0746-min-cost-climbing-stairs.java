@@ -9,9 +9,7 @@ class Solution {
         return dp[cost.length];
     }
     public int recurse(int[] dp, int[] cost, int index){
-        if(index <0){
-            return 0;
-        }
+        
         if(dp[index] !=Integer.MAX_VALUE ){
             return dp[index]; 
         }
