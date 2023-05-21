@@ -41,10 +41,7 @@ class Solution {
                 i++;
                 continue;
             }
-            //if(curr==0){
-               //dp[i]=dp[i-1];
-            //}
-            // if(prev + curr) >= 11 && <=26
+          
             else if(prev!=0 && ((prev  + curr) >=11) && ((prev + curr) <=26)  ){
                 int prev1=dp[i-1];
                 int prevPrev=1;
