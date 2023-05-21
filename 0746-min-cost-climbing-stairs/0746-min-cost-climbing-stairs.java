@@ -5,9 +5,7 @@ class Solution {
         dp[0]=0;
         dp[1]=0;
         recurse(dp, cost, cost.length);
-        for(int x: dp){
-            System.out.println(x); 
-        }
+       
         return dp[cost.length];
     }
     public int recurse(int[] dp, int[] cost, int index){
