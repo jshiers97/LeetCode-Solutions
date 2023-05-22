@@ -2,23 +2,31 @@ class Solution {
     int count=0; 
     int target;
     int[] nums; 
+    int[][] dp;
+    int total;
     public int findTargetSumWays(int[] nums, int target) {
         this.target=target;
         this.nums=nums; 
-        recurse(0, 0); 
-        return count; 
+        this.total=Arrays.stream(nums).sum();
+        this.dp=new int[nums.length][total*2 + 1];
+        
+        return recurse(0, 0); 
+        
     }
-    public void recurse(int index, int sum){
+    public int recurse(int index, int sum){
         if(index==nums.length){
             if(target==sum){
-                count++;
-                return;
+                return 1;
             }
-            return; 
+            return 0; 
         }
-        recurse(index+1, sum+nums[index]);
-        recurse(index+1, sum-nums[index]);
-        return; 
+        if(dp[index][sum + total]!=0){
+            return dp[index][sum+total];
+        }
+        int add=recurse(index+1, sum+nums[index]);
+        int sub=recurse(index+1, sum-nums[index]);
+        dp[index][sum+total]=add + sub; 
+        return dp[index][sum+total]; 
         
     }
 }
