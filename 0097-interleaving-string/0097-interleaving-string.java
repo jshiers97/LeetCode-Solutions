@@ -1,32 +1,58 @@
- public class Solution {
-    public boolean is_Interleave(String s1, int i, String s2, int j, String s3, int k, int[][] memo) {
-        if (i == s1.length()) {
-            return s2.substring(j).equals(s3.substring(k));
-        }
-        if (j == s2.length()) {
-            return s1.substring(i).equals(s3.substring(k));
-        }
-        if (memo[i][j] >= 0) {
-            return memo[i][j] == 1 ? true : false;
-        }
-        boolean ans = false;
-        if (s3.charAt(k) == s1.charAt(i) && is_Interleave(s1, i + 1, s2, j, s3, k + 1, memo)
-                || s3.charAt(k) == s2.charAt(j) && is_Interleave(s1, i, s2, j + 1, s3, k + 1, memo)) {
-            ans = true;
-        }
-        memo[i][j] = ans ? 1 : 0;
-        return ans;
-    }
+class Solution {
+    int m;
+    int n; 
+    String s1;
+    String s2;
+    String s3; 
+    boolean found=false;
+    int dp[][];
     public boolean isInterleave(String s1, String s2, String s3) {
-        if (s1.length() + s2.length() != s3.length()) {
-            return false;
+        this.m=s1.length();
+        this.n=s2.length(); 
+        if(m+n != s3.length()){
+            return false; 
         }
-        int memo[][] = new int[s1.length()][s2.length()];
-        for (int i = 0; i < s1.length(); i++) {
-            for (int j = 0; j < s2.length(); j++) {
-                memo[i][j] = -1;
-            }
+        if(s1.equals("")){
+            return s2.equals(s3);
         }
-        return is_Interleave(s1, 0, s2, 0, s3, 0, memo);
+        if(s2.equals("")){
+            return s1.equals(s3);
+        }
+        
+        this.s1=s1;
+        this.s2=s2;
+        this.s3=s3;
+        this.dp=new int[m][n];
+        for(int[] arr: dp){
+            Arrays.fill(arr, -1); 
+        }
+        return recurse(0, 0);
+       
+        
+    }
+    public boolean recurse(int first, int second){
+        if (first == s1.length()) {
+            return s2.substring(second).equals(s3.substring(first + second));
+        }
+        if (second == s2.length()) {
+            return s1.substring(first).equals(s3.substring(first + second));
+        }
+        if(dp[first][second] >=0){
+            return dp[first][second]==1; 
+        }
+        boolean f=false;
+        boolean s=false;
+       
+        if (s1.charAt(first) == s3.charAt(first + second) && s2.charAt(second) == s3.charAt(first + second)) {
+            f = recurse(first + 1, second) || recurse(first, second + 1);
+        } else if (s1.charAt(first) == s3.charAt(first + second)) {
+            f = recurse(first + 1, second);
+        } else if (s2.charAt(second) == s3.charAt(first + second)) {
+            s = recurse(first, second + 1);
+        }
+ 
+        boolean ans=f||s;
+        dp[first][second]= ans ? 1 : 0; 
+        return ans;
     }
 }
