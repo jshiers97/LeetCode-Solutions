@@ -28,13 +28,13 @@ class Solution {
             for(int i=right-1; i>=left; i--){
                 output.add(matrix[bottom-1][i]);
             }
-            System.out.println(output.get(output.size()-1));
+           
             bottom --;
             
             for(int i=bottom-1; i>=top; i--){
                 output.add(matrix[i][left]);
             }
-            System.out.println(output.get(output.size()-1));
+           
             left++;
         }
         return output; 
