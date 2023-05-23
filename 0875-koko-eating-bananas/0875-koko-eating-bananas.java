@@ -15,7 +15,7 @@ class Solution {
         min=max;
         while(left<=right){
             int mid=(left+right)/2;
-            System.out.println(" mid is " + mid);
+            
             if(check(piles.clone(), h, mid)){
                 min=Math.min(min, mid);
                 right=mid-1;
@@ -41,7 +41,7 @@ class Solution {
             }
             index++;
         }
-        System.out.println("count is " + count); 
+        
         return h>=count;
     }
 }
