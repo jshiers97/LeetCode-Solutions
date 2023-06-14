@@ -11,9 +11,7 @@ class Solution {
                     grid[i][j]=-1;
                     q.offer(new int[]{i, j});
                 }
-                else{
-                    //grid[i][j]=Integer.MAX_VALUE;
-                }
+               
             }
         }
         
@@ -40,7 +38,7 @@ class Solution {
                     q.offer(new int[]{r, c});
                 }
                 else if(grid[r][c] > dist){
-                    System.out.println("HERE");
+                    
                     grid[r][c]=dist;
                     q.offer(new int[]{r, c});
                     max=Math.max(max, dist);
@@ -48,11 +46,7 @@ class Solution {
                 
             }
         }
-        for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
-                System.out.println(grid[i][j]);
-            }
-        }
+       
         
         
         
