@@ -26,15 +26,13 @@ class Solution {
                                 root[k]=i;
                             }
                         }
-                        //map.put(str, i); 
+                    
                     }
                 }
             }
             
         }
-        for(int x: root){
-            System.out.println(x); 
-        }
+    
         Set<Integer> toDo=new HashSet<>(); 
         List<List<String>> lists=new ArrayList<>();
         for(int i=0; i<root.length; i++){
@@ -53,22 +51,7 @@ class Solution {
             list.add(0, names.get(x));
             lists.add(list); 
         }
-        
-        // Map<String, Set<String>> temp=new HashMap<>(); 
-        // for(String str: names){
-        //     temp.put(str, new HashSet<>()); 
-        // }
-        // for(String str: map.keySet()){
-        //     int index=map.get(str); 
-        //     int r=root[index];
-        //     temp.get(names.get(r)).add(str); 
-        // }
-        // for(String name: temp.keySet()){
-        //     List<String> list=new ArrayList<>(temp.get(name));
-        //     Collections.sort(list);
-        //     list.add(0, name);
-        //     lists.add(list);
-        // }
+   
         
         
         
