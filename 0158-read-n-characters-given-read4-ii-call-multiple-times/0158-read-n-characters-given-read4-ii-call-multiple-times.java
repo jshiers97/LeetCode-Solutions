@@ -11,8 +11,6 @@ public class Solution extends Reader4 {
      */
     Queue<Character> q=new LinkedList<>(); 
  
-    int curr4=0; 
-    int index=0; 
     public int read(char[] buf, int n) {
         int output=0;
         
