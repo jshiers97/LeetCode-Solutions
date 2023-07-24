@@ -2,6 +2,7 @@ class Solution {
     Boolean[][] memo;
     public boolean isMatch(String s, String p) {
         this.memo=new Boolean[s.length()+1][p.length()+1];
+        
         return dp(s,0 ,p,0);
     }
     public boolean dp(String s, int first, String p, int second){
