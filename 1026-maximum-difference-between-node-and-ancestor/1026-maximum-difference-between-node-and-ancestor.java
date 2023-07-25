@@ -14,23 +14,33 @@
  * }
  */
 class Solution {
-    int gmax=0;
+    int maxDiff=Integer.MIN_VALUE;
+    
     public int maxAncestorDiff(TreeNode root) {
-        iterate(root, root.val, root.val);
-        return gmax;
+        recurse(root.left, root.val, root.val);
+        recurse(root.right, root.val, root.val);
+        return maxDiff;
     }
-    public void iterate(TreeNode curr, int min, int max){
+    public void recurse(TreeNode curr, Integer min, Integer max){
         if(curr==null){
             return;
         }
-        if(Math.abs(curr.val - min) > gmax){
-            gmax=Math.abs(curr.val-min);
+        
+        if(min!=null){
+            maxDiff=Math.max(maxDiff, Math.abs(curr.val-min));
         }
-        if(Math.abs(curr.val - max) > gmax){
-            gmax=Math.abs(curr.val-max);
+        if(max!=null){
+            maxDiff=Math.max(maxDiff, Math.abs(curr.val - max)); 
         }
-        iterate(curr.left, Math.min(min, curr.val), Math.max(curr.val, max));
-        iterate(curr.right, Math.min(min, curr.val), Math.max(curr.val, max));
-        return;
+        if(min==null){
+            min=curr.val;
+        }
+        if(max==null){
+            max=curr.val;
+        }
+        
+        recurse(curr.left, Math.min(min, curr.val), Math.max(max, curr.val)  );
+        recurse(curr.right, Math.min(min, curr.val), Math.max(max, curr.val)); 
+        
     }
 }
