@@ -30,7 +30,7 @@ class Solution {
                 
             }
             else{
-                System.out.println("here");
+                
                 top=mid+1;
             }
         }
