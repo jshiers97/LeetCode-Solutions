@@ -2,7 +2,7 @@ class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         int left=0;
         int m=matrix.length;
-        System.out.println(m);
+        
         int n=matrix[0].length;
         int right=n-1; 
         int top=0; 
