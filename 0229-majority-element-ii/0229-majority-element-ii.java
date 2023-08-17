@@ -6,6 +6,8 @@ class Solution {
         Integer first=null;
         Integer second=null;
         for(int x: nums){
+            //System.out.println(first + " " + count1) ;
+            //System.out.println(second);
             if(first!=null && first==x){
                 count1++;
             }
@@ -14,23 +16,23 @@ class Solution {
             }
             else if(count1==0){
                 first=x;
-                count1++;
+                count1=1;
             }
             else if(count2==0){
                 second=x;
-                count2++;
+                count2=1;
             }
             else{
                 count1--;
                 count2--;
             }
             
-          
         }
         
         count1=0;
         count2=0; 
-        
+        System.out.println(first);
+        System.out.println(second);
         for(int x: nums){
             if(x==first){
                 count1++;
