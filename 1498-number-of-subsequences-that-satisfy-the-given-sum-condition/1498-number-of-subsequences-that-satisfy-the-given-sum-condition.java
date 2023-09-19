@@ -15,8 +15,9 @@ class Solution {
         while(left <= right){
             if(nums[left] + nums[right] <= target){
                 int temp=(int)(Math.pow(2, right-left) % mod);
-                //System.out.println(temp);
+                System.out.println(temp);
                 res+= power[right-left];
+                System.out.println(power[right-left]);
                 res%=mod;
                 left++;
                 
