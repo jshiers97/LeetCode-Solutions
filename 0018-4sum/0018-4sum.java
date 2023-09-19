@@ -6,7 +6,8 @@ class Solution {
         
     }
     
-    public List<List<Integer>> kSum(int[] nums, long target, int start, int k) {
+    public List<List<Integer>> kSum(int[] nums, long target, int start, int k){
+        
         List<List<Integer>> res = new ArrayList<>();
 
         // If we have run out of numbers to add, return res.
@@ -39,6 +40,7 @@ class Solution {
         }
     
         return res;
+        
     }
     
     public List<List<Integer>> twoSum(int[] nums, long target, int start) {
