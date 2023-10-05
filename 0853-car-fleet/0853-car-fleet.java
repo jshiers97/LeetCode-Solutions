@@ -25,7 +25,7 @@ class Solution {
             int currSpeed=curr[1];
             int remain=target - currPos; 
             double sec=(double)remain / currSpeed;
-            System.out.println(sec);
+            
             if(stack.isEmpty()){
                 stack.push(sec);
                 fleet++;
