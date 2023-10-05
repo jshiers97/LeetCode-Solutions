@@ -1,9 +1,7 @@
 class Solution {
     public String simplifyPath(String path) {
         String[] paths=path.split("\\/+");
-        for(String t: paths){
-            System.out.println(t);
-        }
+        
         Stack<String> stack=new Stack<>();
         for(int i=0; i<paths.length; i++){
             String curr=paths[i];
