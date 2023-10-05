@@ -1,24 +1,44 @@
 class Solution {
     public int carFleet(int target, int[] position, int[] speed) {
-        PriorityQueue<int[]> pq=new PriorityQueue<>( (x,y )-> (y[0] -x[0]));
-        for(int i=0; i<speed.length; i++){
-            int[] car=new int[]{position[i], speed[i]};
-            pq.offer(car); 
-        }
+        Stack<Double> stack=new Stack<>(); 
         
-        double slowest=0;
-        int groups=0;
-        while(!pq.isEmpty()){
-            int[] car=pq.poll();
-            int spee=car[1];
-            int positio=car[0];
-            double total= (double)(target - positio) / spee; 
-            //System.out.println(total); 
-            if(total>slowest){
-                slowest=total; 
-                groups++; 
+        //first is position, second is speed
+        List<int[]> list=new ArrayList<int[]>( );
+        
+        for(int i=0 ;i<speed.length; i++){
+            list.add(new int[]{position[i], speed[i]});
+            
+        }
+        Collections.sort(list, new Comparator<int[]>(){
+            @Override
+            public int compare(int[] x, int[] y){
+                Integer f=x[0];
+                Integer g=y[0];
+                return g.compareTo(f);
+            }
+        });
+        
+        int fleet=0;
+        for(int i=0; i<list.size(); i++){
+            int[] curr=list.get(i); 
+            int currPos=curr[0];
+            int currSpeed=curr[1];
+            int remain=target - currPos; 
+            double sec=(double)remain / currSpeed;
+            System.out.println(sec);
+            if(stack.isEmpty()){
+                stack.push(sec);
+                fleet++;
+            }
+            else if(sec > stack.peek()){
+                stack.push(sec); 
+                fleet++;
+            }
+            else{
+                continue;
             }
         }
-        return groups; 
+        return fleet;
+        
     }
 }
