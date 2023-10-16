@@ -34,7 +34,7 @@ class FreqStack {
     }
     
     public int pop() {
-        System.out.println("here" + maxVal); 
+        
         int ret=maxVal; 
         count.put(maxVal, count.get(maxVal)-1);
         level.get(maxCount).pop();
