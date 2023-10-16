@@ -8,6 +8,7 @@ class Solution {
        
         for(int i=0; i<spells.length; i++){
             long minPotion = (long) Math.ceil((1.0 * success) / spells[i]);
+            System.out.println(minPotion); 
             if(minPotion > maxPotion){
                 res[i]=0;
                 continue;
@@ -23,7 +24,8 @@ class Solution {
         boolean found=false;
         int left=0; 
         int right=potions.length; 
-       
+        int maxPotion=potions[right-1];
+        
        
         while(left <= right){
             int mid=(left+right)/2;
