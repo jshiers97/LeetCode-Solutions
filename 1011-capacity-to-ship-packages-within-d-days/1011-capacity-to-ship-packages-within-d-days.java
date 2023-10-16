@@ -10,15 +10,14 @@ class Solution {
         }
     
             
-        int max=250000000;
+        int max=Integer.MAX_VALUE / 10;
         while(min <= max){
             int mid=(min + max)/2;
-            //int mid=(int)midT;
-            System.out.println(mid);
+            
             
             if(check(weights, days, mid)){
                 smallest=Math.min(mid, smallest);
-                System.out.println(mid  + "HI");
+                
                 max=mid-1;
             }
             else{
