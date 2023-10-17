@@ -8,7 +8,7 @@ class Solution {
         int res=max;
         while(min <= max){
             int mid=(min + max)/2;
-            System.out.println(mid); 
+            
             if(check(piles.clone(), h, mid)){
                 
                 res=mid;
