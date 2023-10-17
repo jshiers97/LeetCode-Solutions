@@ -1,47 +1,46 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
-        int max=piles[0];
-        int min=Integer.MAX_VALUE;
+        int min=1;
+        int max=0;
         for(int x: piles){
-            
-            max=Math.max(x, max); 
-            
+            max=Math.max(max, x); 
         }
-        if(piles.length==h){
-            return max; 
-        }
-        int left=1;
-        int right=max; 
-        min=max;
-        while(left<=right){
-            int mid=(left+right)/2;
-            
+        int res=max;
+        while(min <= max){
+            int mid=(min + max)/2;
+            System.out.println(mid); 
             if(check(piles.clone(), h, mid)){
-                min=Math.min(min, mid);
-                right=mid-1;
+                
+                res=mid;
+                max=mid-1; 
+                
             }
             else{
-                left=mid+1;
+                min=mid+1; 
             }
         }
-        return min;
+        return res;
     }
-    public boolean check(int[] piles, int h, int num){
-        int index=0;
-        int count=0;
-        while(index<piles.length){
-            int temp=piles[index]%num;
-            count+= piles[index]/num;
-            if(temp>=1){
-                count++;
+    public boolean check(int[] piles, int h, int curr){
+        long days=0; 
+       
+        for(int i=0; i<piles.length; i++){
+            if(piles[i] <= curr){
+                days++;
+                
             }
-            
-            if(count > h){
-                return false;
+            else{
+                days+= piles[i]/curr;
+                if(piles[i]%curr != 0){
+                    days++; 
+                }
+                
             }
-            index++;
         }
-        
-        return h>=count;
+        if(days <=h){
+            
+            return true;
+        }
+        return false;
     }
 }
