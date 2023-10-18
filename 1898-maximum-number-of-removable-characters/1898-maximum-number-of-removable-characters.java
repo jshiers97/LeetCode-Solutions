@@ -22,7 +22,7 @@ class Solution {
             temp.setCharAt(removable[i], '?');
             
         }
-        System.out.println("mid   " + mid + "  " + temp.toString() );
+        
         int found=0;
         int index=0;
         int j=0; 
