@@ -19,14 +19,14 @@ class Solution {
        // System.out.println(nums[temp] + "    " + temp);
         while(left <=right){
             int mid=(left+right)/2; 
-            System.out.println(nums[left] + "   " + nums[mid] + "  " + nums[right]); 
+            
             if(nums[mid]==target){
                 return true;
             }
             
             
             if(nums[mid]>= nums[left] && nums[mid]<=nums[right]){
-                System.out.println("here");
+                
                 if(nums[mid] < target){
                     left=mid+1;
                 }
@@ -35,7 +35,7 @@ class Solution {
                 }
             }
             else if(nums[left]==nums[right]){
-                System.out.println("here1");
+                
                 if(nums[mid] > target && nums[left]<=target){
                     right=mid-1; 
                 }
@@ -44,15 +44,15 @@ class Solution {
                 }
             }
             else if(nums[mid]==nums[right]){
-                System.out.println("here2");
+                
                 right=mid-1; 
             }
             else if(nums[mid]==nums[left]){
-                System.out.println("here3");
+                
                 left=mid+1; 
             }
             else if(nums[mid]<nums[right]){
-                System.out.println("here4");
+                
                 if(target > nums[right]){
                     right=mid-1; 
                 }
@@ -61,7 +61,7 @@ class Solution {
                 }
             }
             else{
-                System.out.println("here5");
+                
                 if(nums[mid] > target && nums[left]<=target){
                     right=mid-1; 
                 }
