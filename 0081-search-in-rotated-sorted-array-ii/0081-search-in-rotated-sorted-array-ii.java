@@ -2,7 +2,7 @@ class Solution {
     public boolean search(int[] nums, int target) {
         int left=0; 
         int right=nums.length-1;
-        System.out.println(nums.length);
+        
         int temp=0; 
         boolean search=false;
         if(nums[left]==nums[right] && left!=right && target !=nums[left]){
@@ -15,8 +15,7 @@ class Solution {
         while(left <=right && search && nums[right]==temp){
             right--; 
         }
-        //int temp=(left+right)/2;
-       // System.out.println(nums[temp] + "    " + temp);
+       
         while(left <=right){
             int mid=(left+right)/2; 
             
