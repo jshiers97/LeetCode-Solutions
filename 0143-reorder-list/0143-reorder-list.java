@@ -41,7 +41,7 @@ class Solution {
             it=it.next;
         }
         
-        System.out.println(head.val); 
+        
         iter=head;
         iter=iter.next;
         ListNode secondIter=secondHead.next;
