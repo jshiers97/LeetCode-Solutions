@@ -12,9 +12,9 @@ class Solution {
     public int pairSum(ListNode head) {
         ListNode slow=head;
         ListNode fast=head;
-        ListNode prev=null;
+        
         while(fast!=null && fast.next!=null){
-            prev=slow;
+            
             slow=slow.next;
             fast=fast.next.next;
             
@@ -24,7 +24,7 @@ class Solution {
         
         //reverse second half
         ListNode curr=slow;
-        prev=null;
+        ListNode prev=null;
         ListNode tmp;
         while(curr!=null){
             tmp=curr.next;
