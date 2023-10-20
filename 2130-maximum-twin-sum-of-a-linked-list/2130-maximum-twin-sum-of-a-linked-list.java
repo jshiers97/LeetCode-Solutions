@@ -20,7 +20,7 @@ class Solution {
             
         }
         prev.next=null;
-        System.out.println(slow.val);
+        
         
         //reverse second half
         ListNode curr=slow;
@@ -35,7 +35,7 @@ class Solution {
         }
         int max=0;
         while(head!=null){
-            System.out.println("here");
+            
             max=Math.max(max, head.val + prev.val); 
             head=head.next;
             prev=prev.next;
