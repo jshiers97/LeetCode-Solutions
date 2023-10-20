@@ -13,65 +13,37 @@ class Solution {
         if(head==null || head.next==null){
             return;
         }
-        ListNode sent=head;
-        int size=0;
-        ListNode iter=head;
-        while(iter!=null){
-            size++;
-            iter=iter.next;
+        
+        ListNode slow=head;
+        ListNode fast=head;
+        while(fast!=null && fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
         }
-        int half=size/2;
-        if(size%2==1){
-            half++;
+        
+        //reverse second part of list
+        ListNode prev=null;
+        ListNode curr=slow;
+        ListNode tmp;
+        while(curr!=null){
+            tmp=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=tmp;
+        }
+    
+        
+        //merge
+        ListNode first=head;
+        ListNode second=prev;
+        while(second.next!=null){
+            tmp=first.next;
+            first.next=second;
+            first=tmp;
             
+            tmp=second.next;
+            second.next=first;
+            second=tmp;
         }
-        iter=head;
-        half--;
-        while(half > 0){
-            iter=iter.next;
-            half--; 
-        }
-        ListNode temp=iter.next;
-        
-        ListNode secondHead=reverse(temp);
-        
-        iter.next=null;
-        
-        
-        
-        iter=head;
-        iter=iter.next;
-        ListNode secondIter=secondHead.next;
-        while(iter!=null){
-            head.next=secondHead;
-            secondHead.next=iter;
-            head=iter;
-            if(secondIter!=null){
-                secondHead=secondIter;
-                secondIter=secondIter.next;
-            }
-            iter=iter.next;
-        }
-        if(size%2==0){
-            head.next=secondHead;
-        }
-        
-        
-        
-    }
-    public ListNode reverse(ListNode node){
-        Stack<ListNode> stack=new Stack();
-        while(node!=null){
-            stack.push(node);
-            node=node.next;
-        }
-        ListNode newHead=stack.pop(); 
-        ListNode sent=newHead;
-        while(!stack.isEmpty()){
-            newHead.next=stack.pop();
-            newHead=newHead.next;
-        }
-        newHead.next=null; 
-        return sent;
     }
 }
