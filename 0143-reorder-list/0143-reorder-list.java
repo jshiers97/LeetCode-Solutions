@@ -34,12 +34,9 @@ class Solution {
         ListNode temp=iter.next;
         
         ListNode secondHead=reverse(temp);
-        ListNode it=secondHead;
+        
         iter.next=null;
-        while(it!=null){
-            System.out.println(it.val);
-            it=it.next;
-        }
+        
         
         
         iter=head;
