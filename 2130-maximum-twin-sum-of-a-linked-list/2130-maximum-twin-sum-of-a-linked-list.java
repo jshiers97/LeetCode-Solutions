@@ -19,7 +19,7 @@ class Solution {
             fast=fast.next.next;
             
         }
-        prev.next=null;
+        //prev.next=null;
         
         
         //reverse second half
@@ -34,7 +34,7 @@ class Solution {
             
         }
         int max=0;
-        while(head!=null){
+        while(prev!=null){
             
             max=Math.max(max, head.val + prev.val); 
             head=head.next;
