@@ -10,55 +10,71 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
-        
-        ListNode l1=head;
-        ListNode l2=head.next;
-        ListNode sent1=l1;
-        ListNode sent2=l2; 
-        int count=0;
-        while(l1!=null){
-            count++;
-            l1=l1.next;
-        }
-        if(count==1 || count==2){
+        if(head==null || head.next==null){
             return;
         }
-        count/=2;
-        
-        l1=sent1;
-       
-        for(int i=0; i<count; i++ ){
-            l1=l1.next;
+        ListNode sent=head;
+        int size=0;
+        ListNode iter=head;
+        while(iter!=null){
+            size++;
+            iter=iter.next;
         }
-        l2=l1.next;
-        l1.next=null;
-        sent2=l2;
-        
-        Stack<ListNode> stack=new Stack<>();
-        while(sent2!=null){
-            stack.push(sent2);
-            sent2=sent2.next;
-        }
-        
-        while(sent1!=null){
-            ListNode temp=sent1.next;
-            if(temp==null){
-                break;
-            }
-            ListNode n=null;
-            if(!stack.isEmpty()){
-                n=stack.pop(); 
-                sent1.next=n;
-                n.next=temp;
-                sent1=temp;
-                
-            }
-            else{
-                temp.next=null;
-                break;
-            }
-            
+        int half=size/2;
+        if(size%2==1){
+            half++;
             
         }
+        iter=head;
+        half--;
+        while(half > 0){
+            iter=iter.next;
+            half--; 
+        }
+        ListNode temp=iter.next;
+        
+        ListNode secondHead=reverse(temp);
+        ListNode it=secondHead;
+        iter.next=null;
+        while(it!=null){
+            System.out.println(it.val);
+            it=it.next;
+        }
+        
+        System.out.println(head.val); 
+        iter=head;
+        iter=iter.next;
+        ListNode secondIter=secondHead.next;
+        while(iter!=null){
+            head.next=secondHead;
+            secondHead.next=iter;
+            head=iter;
+            if(secondIter!=null){
+                secondHead=secondIter;
+                secondIter=secondIter.next;
+            }
+            iter=iter.next;
+        }
+        if(size%2==0){
+            head.next=secondHead;
+        }
+        
+        
+        
+    }
+    public ListNode reverse(ListNode node){
+        Stack<ListNode> stack=new Stack();
+        while(node!=null){
+            stack.push(node);
+            node=node.next;
+        }
+        ListNode newHead=stack.pop(); 
+        ListNode sent=newHead;
+        while(!stack.isEmpty()){
+            newHead.next=stack.pop();
+            newHead=newHead.next;
+        }
+        newHead.next=null; 
+        return sent;
     }
 }
