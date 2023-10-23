@@ -18,10 +18,10 @@ class Solution {
         if(root==null){
             return new TreeNode(val); 
         }
-        insert(root,null, null, val);
+        insert(root, val);
         return root;
     }
-    public void insert(TreeNode curr, Integer low, Integer high, int val){
+    public void insert(TreeNode curr, int val){
         if(curr.val < val ){
             if(curr.right==null){
                 TreeNode insert=new TreeNode(val);
@@ -29,7 +29,7 @@ class Solution {
                 return;
             }
             else{
-                insert(curr.right, low, high, val); 
+                insert(curr.right,  val); 
             }
         }
         else if(curr.val > val){
@@ -39,7 +39,7 @@ class Solution {
                 return;
             }
             else{
-                insert(curr.left, low, high, val); 
+                insert(curr.left,  val); 
             }
         }
     }
