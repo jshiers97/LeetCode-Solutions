@@ -10,36 +10,42 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
+        if(lists.length==0){
+            return null; 
+        }
+        int interval=1; 
+        while(interval < lists.length){
+            for(int i=0; i+interval < lists.length; i=i+interval*2){
+                lists[i]=mergeTwoLists(lists[i], lists[i+interval]);
+            }
+            interval=interval*2;
+        }
+        return lists[0];
+        
+        
+    }
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2){
         ListNode sent=new ListNode(-1);
         ListNode ret=sent;
-        int max=Integer.MAX_VALUE;
-        int index=-1;
-        
-        
-        while(true){
-            for(int i=0; i<lists.length; i++){
-                if(lists[i]==null){
-                    continue;
-                }
-                if(lists[i].val < max){
-                    max=lists[i].val;
-                    index=i; 
-
-                }
-            }
-            if(index==-1){
-                break;
+        while(l1!=null && l2!=null){
+            if(l1.val>l2.val){
+                sent.next=l2;
+                sent=l2;
+                l2=l2.next;
             }
             else{
-                ListNode insert=new ListNode(max);
-                sent.next=insert;
-                sent=insert;
-                lists[index]=lists[index].next;
-                index=-1;
-                max=Integer.MAX_VALUE;
+                sent.next=l1;
+                sent=l1;
+                l1=l1.next;
             }
         }
-        return ret.next;
-        
+        if(l1!=null){
+            sent.next=l1;
+            
+        }
+        else if(l2!=null){
+            sent.next=l2; 
+        }
+        return ret.next; 
     }
 }
