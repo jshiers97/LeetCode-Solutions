@@ -9,43 +9,48 @@
  */
 class BSTIterator {
 
-    ArrayList<Integer> nodesSorted;
-    int index;
+    Stack<TreeNode> stack;
 
     public BSTIterator(TreeNode root) {
 
-        // Array containing all the nodes in the sorted order
-        this.nodesSorted = new ArrayList<Integer>();
+        // Stack for the recursion simulation
+        this.stack = new Stack<TreeNode>();
 
-        // Pointer to the next smallest element in the BST
-        this.index = -1;
-
-        // Call to flatten the input binary search tree
-        this._inorder(root);
+        // Remember that the algorithm starts with a call to the helper function
+        // with the root node as the input
+        this._leftmostInorder(root);
     }
 
-    private void _inorder(TreeNode root) {
+    private void _leftmostInorder(TreeNode root) {
 
-        if (root == null) {
-            return;
+        // For a given node, add all the elements in the leftmost branch of the tree
+        // under it to the stack.
+        while (root != null) {
+            this.stack.push(root);
+            root = root.left;
         }
-
-        this._inorder(root.left);
-        this.nodesSorted.add(root.val);
-        this._inorder(root.right);
     }
 
     /**
      * @return the next smallest number
      */
     public int next() {
-        return this.nodesSorted.get(++this.index);
+        // Node at the top of the stack is the next smallest element
+        TreeNode topmostNode = this.stack.pop();
+
+        // Need to maintain the invariant. If the node has a right child, call the
+        // helper function for the right child
+        if (topmostNode.right != null) {
+            this._leftmostInorder(topmostNode.right);
+        }
+
+        return topmostNode.val;
     }
 
     /**
      * @return whether we have a next smallest number
      */
     public boolean hasNext() {
-        return this.index + 1 < this.nodesSorted.size();
+        return this.stack.size() > 0;
     }
 }
