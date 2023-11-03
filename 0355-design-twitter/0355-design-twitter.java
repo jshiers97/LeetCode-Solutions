@@ -65,12 +65,12 @@ class Twitter {
         }
         if(userTweets.containsKey(userId) && userTweets.get(userId).size() > 0){
             Queue<Tweet> q=new LinkedList<>(userTweets.get(userId));
-        while(!q.isEmpty()){
-            pq.offer(q.poll());
-            if(pq.size() >10){
-                pq.poll();
+            while(!q.isEmpty()){
+                pq.offer(q.poll());
+                if(pq.size() >10){
+                    pq.poll();
+                }
             }
-        }
         }
         
         List<Integer> res=new ArrayList<>();
