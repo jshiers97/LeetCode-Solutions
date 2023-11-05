@@ -11,7 +11,7 @@ class Solution {
             System.out.println(x);
             min=Math.min(min, x); 
         }
-        System.out.println(min + "here is min");
+       
         PriorityQueue<Integer> maxHeap=new PriorityQueue<>(Collections.reverseOrder()); 
         for(int x: nums){
             maxHeap.offer(x);
@@ -21,19 +21,19 @@ class Solution {
         while(!maxHeap.isEmpty()){
             minDiff=Math.min(minDiff, max-min);
             int top=maxHeap.poll();
-            System.out.println(top);
+            
             if(top%2==0){
                 top/=2;
-                System.out.println("new top is " + top);
+               
                 min=Math.min(min, top);
                 if(maxHeap.peek() > top){
-                    System.out.println("her1");
+                    
                     maxHeap.offer(top);
                     max=maxHeap.peek();
                     minDiff=Math.min(minDiff, max-min);
                 }
                 else if(maxHeap.peek() == top){
-                    System.out.println("here weird");
+                   
                     if(top==min){
                         return 0;
                     }
@@ -50,12 +50,12 @@ class Solution {
                     else{
                         maxHeap.offer(top);
                     }
-                    System.out.println("her2");
+                    
                     
                 }
             }
             else{
-                System.out.println("her3`");
+                
                 return minDiff;
             }
         }
