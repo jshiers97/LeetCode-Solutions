@@ -8,7 +8,7 @@ class Solution {
         }
         int min=nums[0];
         for(int x: nums){
-            System.out.println(x);
+           
             min=Math.min(min, x); 
         }
        
