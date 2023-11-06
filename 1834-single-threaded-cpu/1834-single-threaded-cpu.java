@@ -38,7 +38,7 @@ class Solution {
         
         //now, lets start at time smallest, add those to pq, then start
         int[] first=sortedByTime.get(timeSortIndex++);
-        //System.out.println(first[0] + "   " + first[1] + "  " + first[2]);
+
             
     
         pq.offer(new int[]{first[2], first[1]});
@@ -51,7 +51,7 @@ class Solution {
         while(!pq.isEmpty()){
             
             int[] curr=pq.poll();
-            //System.out.println(curr[0] + "   "  + curr[1]);
+
             int currTime=time;
             res[resIndex++]=curr[0];
             currTime+=curr[1];
@@ -62,7 +62,7 @@ class Solution {
             else if(timeSortIndex<sortedByTime.size() && sortedByTime.get(timeSortIndex)[0]<=time){
                 while(timeSortIndex < sortedByTime.size() && sortedByTime.get(timeSortIndex)[0] <= time){
                     pq.offer(new int[]{sortedByTime.get(timeSortIndex)[2], sortedByTime.get(timeSortIndex)[1]});
-                    //System.out.println("here"  + first[0]  + "  " + first[2] + "   time sort index is  " + timeSortIndex);
+
                     timeSortIndex++;
                 }
             }
@@ -74,7 +74,7 @@ class Solution {
                    time=sortedByTime.get(timeSortIndex)[0];
                     while(timeSortIndex < sortedByTime.size() && sortedByTime.get(timeSortIndex)[0] <= time){
                         pq.offer(new int[]{sortedByTime.get(timeSortIndex)[2], sortedByTime.get(timeSortIndex)[1]});
-                        //System.out.println("here"  + first[0]  + "  " + first[2] + "   time sort index is  " + timeSortIndex);
+                       
                         timeSortIndex++;
                     } 
                 }
