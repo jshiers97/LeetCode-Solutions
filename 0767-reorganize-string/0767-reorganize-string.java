@@ -13,8 +13,7 @@ class Solution {
             
             pq.offer(new Pair<>(c, chars[c-'a']));
         }
-        System.out.println(chars[0]);
-        System.out.println(chars[1]);
+        
         StringBuilder res=new StringBuilder();
         List<Pair<Character, Integer>> temp=new ArrayList<>();
         while(!pq.isEmpty()){
@@ -22,8 +21,7 @@ class Solution {
             char c=curr.getKey();
             int num=curr.getValue();
             if(res.length() > 0 && res.charAt(res.length()-1)==c){
-                System.out.println(res.toString()); 
-                System.out.println(num);
+                
                 return "";
             }
             res.append(c);
