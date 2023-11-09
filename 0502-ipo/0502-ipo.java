@@ -29,12 +29,12 @@ class Solution {
             pq.offer(new int[]{sortedProfits[index], sortedCapital[index]});
             index++;
         }
-        int currProfit=w;
+
         while(!pq.isEmpty() && currProject < k ){
             int[] curr=pq.poll();
             //currCapital-=curr[1];
             currCapital+=curr[0];
-            currProfit+=curr[0];
+
             
             currProject++;
             while(index < sortedCapital.length && sortedCapital[index]<= currCapital ){
