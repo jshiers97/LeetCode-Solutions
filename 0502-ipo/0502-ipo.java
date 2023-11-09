@@ -43,6 +43,6 @@ class Solution {
             }
             
         }
-        return currProfit;
+        return currCapital;
     }
 }
