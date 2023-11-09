@@ -35,7 +35,7 @@ class Solution {
             //currCapital-=curr[1];
             currCapital+=curr[0];
             currProfit+=curr[0];
-            System.out.println(curr[0]);
+            
             currProject++;
             while(index < sortedCapital.length && sortedCapital[index]<= currCapital ){
                 pq.offer(new int[]{sortedProfits[index], sortedCapital[index]});
