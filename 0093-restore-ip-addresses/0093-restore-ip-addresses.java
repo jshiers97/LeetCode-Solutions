@@ -36,8 +36,7 @@ class Solution {
                     insert.append(".");
                 }
                 
-                System.out.println(insert.toString() );
-                System.out.println(sections); 
+               
                 backtrack(i+1, s, insert, sections+1);
             }
             else{
