@@ -14,7 +14,7 @@ class Solution {
             val*=10;
             val+=currVal;
             if(prev==null || val+1==prev){
-                System.out.println(val); 
+                
                 found=found || backtrack(i+1, s, val, values+1); 
             }
         }
