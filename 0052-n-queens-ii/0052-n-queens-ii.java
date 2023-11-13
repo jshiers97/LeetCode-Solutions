@@ -2,6 +2,7 @@ class Solution {
     List<List<String>> res=new ArrayList<>(); 
     int n;
     String copy;
+    int result=0; 
     public int totalNQueens(int n) {
         this.n=n;
         StringBuilder temp=new StringBuilder();
@@ -9,12 +10,12 @@ class Solution {
             temp.append(".");
         }
         this.copy=temp.toString(); 
-        backtrack(0, new HashSet<>(), new HashSet<>(), new HashSet<>(), new ArrayList<>()); 
-        return res.size(); 
+        backtrack(0, new HashSet<>(), new HashSet<>(), new HashSet<>()); 
+        return result;
     }
-    public void backtrack(int row, Set<Integer> col, Set<Integer> diag, Set<Integer> antiDiag, List<String> curr){
+    public void backtrack(int row, Set<Integer> col, Set<Integer> diag, Set<Integer> antiDiag){
         if(row==n){
-            res.add(new ArrayList<>(curr)); 
+            result++;
             return; 
         }
         //String insert=new 
@@ -22,14 +23,13 @@ class Solution {
             int diagonal=i-row; 
             int antiDiagonal=i+row; 
             if(!col.contains(i) && !diag.contains(diagonal) && !antiDiag.contains(antiDiagonal)){
-                StringBuilder insert=new StringBuilder(copy); 
-                insert.setCharAt(i, 'Q');
-                curr.add(insert.toString());
+                
+               
                 col.add(i);
                 diag.add(diagonal);
                 antiDiag.add(antiDiagonal); 
-                backtrack(row+1, col, diag, antiDiag, curr); 
-                curr.remove(curr.size()-1);
+                backtrack(row+1, col, diag, antiDiag); 
+               
                 col.remove(i);
                 diag.remove(diagonal);
                 antiDiag.remove(antiDiagonal); 
