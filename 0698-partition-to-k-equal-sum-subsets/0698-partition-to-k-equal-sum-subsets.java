@@ -1,44 +1,45 @@
 class Solution {
-    private boolean backtrack(int[] arr, int index, int count, int currSum, int k, 
-                              int targetSum, boolean[] taken) {
-
-        int n = arr.length;
-      
-        // We made k - 1 subsets with target sum and last subset will also have target sum.
-        if (count == k - 1) { 
-            return true;
+    
+    public boolean canPartitionKSubsets(int[] nums, int k) {
+        int sum=0;
+        for(int x: nums){
+            sum+=x; 
         }
-        
-        // No need to proceed further.
-        if (currSum > targetSum) { 
+        if(sum%k!=0){
             return false;
         }
-      
-        // When curr sum reaches target then one subset is made.
-        // Increment count and reset current sum.
-        if (currSum == targetSum) {
-            return backtrack(arr, 0, count + 1, 0, k, targetSum, taken);
-        }
+        boolean[] used=new boolean[nums.length];
+        Arrays.sort(nums);
+        reverse(nums);
+        return backtrack(0, nums, k, 0, 0, sum/k, used);
         
-        // Try not picked elements to make some combinations.
-        for (int j = index; j < n; ++j) {
-            if (!taken[j]) {
-                // Include this element in current subset.
-                taken[j] = true;
-                
-                // If using current jth element in this subset leads to make all valid subsets.
-                if (backtrack(arr, j + 1, count, currSum + arr[j], k, targetSum, taken)) {
-                    return true;
-                }
-                
-                // Backtrack step.
-                taken[j] = false;
+    }
+    public boolean backtrack(int index, int[] nums, int k, int curr, int partitions, int target, boolean[] used){
+        if(partitions==k){
+            return true;
+        }
+        if(curr>target){
+            return false;
+        }
+        if(curr==target){
+            return backtrack(0, nums, k, 0, partitions+1, target, used);
+            //return backtrack(arr, 0, nums, k, 0, partitions+1, target, used);
+        }
+        boolean found=false;
+        
+        for(int i=index; i<nums.length; i++){
+            
+            if(used[i]){
+                continue;
             }
-        } 
-      
-        // We were not able to make a valid combination after picking each element from the array,
-        // hence we can't make k subsets.
-        return false;
+            else{
+                used[i]=true;
+                found=found || backtrack(i+1, nums, k, curr+nums[i], partitions, target, used);
+                used[i]=false;
+            }
+            
+        }
+        return found; 
     }
     
     void reverse(int[] arr) {
@@ -47,28 +48,5 @@ class Solution {
             arr[i] = arr[j];
             arr[j] = temp;
         }
-    }
-  
-    public boolean canPartitionKSubsets(int[] arr, int k) {
-        int totalArraySum = 0;
-        int n = arr.length;
-        
-        for (int i = 0; i < n; ++i) {
-             totalArraySum += arr[i];
-        }
-      
-        // If total sum not divisible by k, we can't make subsets.
-        if (totalArraySum % k != 0) { 
-            return false;
-        }
-      
-        // Sort in decreasing order.
-        Arrays.sort(arr);
-        reverse(arr);
-        
-        int targetSum = totalArraySum / k;
-        boolean[] taken = new boolean[n];
-      
-        return backtrack(arr, 0, 0, 0, k, targetSum, taken);
     }
 }
