@@ -9,8 +9,8 @@ class Solution {
             return false;
         }
         boolean[] used=new boolean[nums.length];
-        Arrays.sort(nums);
-        reverse(nums);
+        //Arrays.sort(nums);
+        //reverse(nums);
         return backtrack(0, nums, k, 0, 0, sum/k, used);
         
     }
