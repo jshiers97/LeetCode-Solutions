@@ -14,7 +14,7 @@ class Solution {
             dq.offerLast(i); 
         }
         res.add(nums[dq.peekFirst()]);
-        System.out.println(dq.size()); 
+        
         for(int i=k; i<nums.length; i++){
             while(!dq.isEmpty() && i-k>=dq.peekFirst()){
                 dq.removeFirst();
