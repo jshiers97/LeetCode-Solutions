@@ -14,15 +14,18 @@ class Solution {
             dq.offerLast(i); 
         }
         res.add(nums[dq.peekFirst()]);
+        System.out.println(dq.size()); 
         for(int i=k; i<nums.length; i++){
-            if(dq.peekFirst()==i-k){
-                dq.pollFirst(); 
+            while(!dq.isEmpty() && i-k>=dq.peekFirst()){
+                dq.removeFirst();
             }
-            while(!dq.isEmpty() && nums[dq.peekLast()] < nums[i]){
-                dq.pollLast();
+            
+            while(!dq.isEmpty() && nums[i]>= nums[dq.peekLast()]){
+                dq.removeLast();
             }
             dq.offerLast(i);
             res.add(nums[dq.peekFirst()]);
+            
             
         }
         return res.stream().mapToInt(i ->i).toArray(); 
