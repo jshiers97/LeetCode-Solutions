@@ -48,76 +48,45 @@ class Solution {
             int[] curr=q.poll();
             int toFlip=curr[0];
             int flipTo=curr[1];
-            System.out.println(toFlip);
-            System.out.println(flipTo); 
+            
             //if this happens, this city is already going to 0. In that case, find all of this city's outgoing and flip them
             //also check their incoming
-            if(toFlip==flipTo){
-                fixed.add(toFlip);
-                if(map.containsKey(toFlip)){
-                    List<Integer> list=map.get(toFlip);
-                    for(Integer x: list){
-                        if(fixed.contains(x)){
-                            continue;
-                        }
-                        else{
-                            q.offer(new int[]{x, toFlip});
-                        }
-                        
-                    }
-                }
-
-                // get all of the cities already coming into 0
-                if(incoming.get(toFlip).size()>0){
-                    List<Integer> list=incoming.get(toFlip);
-                    for(Integer x: list){
-                        if(fixed.contains(x)){
-                            continue;
-                        }
-                        else{
-                            fixed.add(x);
-                            q.offer(new int[]{x, x});  
-                        }
-                        
-                    }
-                }
-                
-                
+            if(toFlip!=flipTo){
+                swap++;
             }
+            fixed.add(toFlip);
+            if(map.containsKey(toFlip)){
+                List<Integer> list=map.get(toFlip);
+                for(Integer x: list){
+                    if(fixed.contains(x)){
+                        continue;
+                    }
+                    else{
+                        q.offer(new int[]{x, toFlip});
+                    }
+
+                }
+            }
+
+            // get all of the cities already coming into 0
+            if(incoming.get(toFlip).size()>0){
+                List<Integer> list=incoming.get(toFlip);
+                for(Integer x: list){
+                    if(fixed.contains(x)){
+                        continue;
+                    }
+                    else{
+                        fixed.add(x);
+                        q.offer(new int[]{x, x});  
+                    }
+
+                }
+            }
+                
+                
+            
             //if this happens, we need to flip. THen check both incoming and outgoing 
-            else{
-                swap++; 
-                
-                fixed.add(toFlip); 
-                if(map.containsKey(toFlip)){
-                    List<Integer> list=map.get(toFlip);
-                    for(Integer x: list){
-                        if(fixed.contains(x)){
-                            continue;
-                        }
-                        else{
-                            q.offer(new int[]{x, toFlip});
-                        }
-                        
-                    }
-                }
-
-                // get all of the cities already coming into 0
-                if(incoming.get(toFlip).size()>0){
-                    List<Integer> list=incoming.get(toFlip);
-                    for(Integer x: list){
-                        if(fixed.contains(x)){
-                            continue;
-                        }
-                        else{
-                            fixed.add(x);
-                            q.offer(new int[]{x, x});  
-                        }
-                        
-                    }
-                }
-                
-            }
+            
         }
         return swap; 
         
