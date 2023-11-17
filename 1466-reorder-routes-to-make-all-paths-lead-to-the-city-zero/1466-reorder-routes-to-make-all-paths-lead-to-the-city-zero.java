@@ -1,15 +1,15 @@
 class Solution {
-    int[] root;
+
     int n;
     Map<Integer, List<Integer>> map=new HashMap<>(); 
     Map<Integer, List<Integer>> incoming=new HashMap<>();
     
     public int minReorder(int n, int[][] connections) {
-        this.root=new int[n];
+        
         this.n=n;
         Set<Integer> fixed=new HashSet<>(); 
         for(int i=0; i<n; i++){
-            root[i]=i; 
+            
             map.put(i, new ArrayList<>());
             incoming.put(i, new ArrayList<>());
         }
@@ -92,18 +92,5 @@ class Solution {
         
         
     }
-    public int find(int x){
-        return root[x];
-    }
-    public void union(int x, int y){
-        int findX=find(x);
-        int findY=find(y); 
-        if(findX!=findY){
-            for(int i=0; i<n; i++){
-                if(root[i]==findY){
-                    root[i]=findX;
-                }
-            }
-        }
-    }
+    
 }
