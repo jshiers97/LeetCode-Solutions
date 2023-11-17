@@ -30,7 +30,7 @@ class Solution {
         if(map.containsKey(0)){
             List<Integer> list=map.get(0);
             for(Integer x: list){
-                System.out.println("here");
+               
                 q.offer(new int[]{x, 0});
             }
         }
