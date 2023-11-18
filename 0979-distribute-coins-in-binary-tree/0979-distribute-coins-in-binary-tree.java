@@ -14,19 +14,19 @@
  * }
  */
 class Solution {
-    int ans;
+    int res=0; 
     public int distributeCoins(TreeNode root) {
-        this.ans=0;
         dfs(root);
-        return ans;
+        return res;
     }
-    public int dfs(TreeNode node){
-        if(node==null){
+    public int dfs(TreeNode curr){
+        if(curr==null){
             return 0;
         }
-        int left=dfs(node.left);
-        int right=dfs(node.right);
-        ans+= Math.abs(left) + Math.abs(right);
-        return node.val + left + right - 1;
+        int left=dfs(curr.left);
+        int right=dfs(curr.right); 
+        res+=Math.abs(left) + Math.abs(right);
+       
+        return left + right + curr.val -1;
     }
 }
