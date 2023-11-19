@@ -16,11 +16,7 @@ class Solution {
                 }
             }
         }
-        for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
-                System.out.println(grid[i][j]);
-            }
-        }
+        
         
         q1.offer(new int[]{-1,-1}); 
         int time=0; 
