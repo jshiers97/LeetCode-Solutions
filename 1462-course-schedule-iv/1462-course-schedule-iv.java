@@ -10,7 +10,7 @@ class Solution {
         }
         for(int i=0; i<prerequisites.length; i++){
             int[] curr=prerequisites[i];
-            map.get(curr[0]).add(curr[1]);
+            map.get(curr[1]).add(curr[0]);
             //indegree[curr[1]]++;
         }
         
@@ -21,7 +21,7 @@ class Solution {
         for(int[] query: queries){
             int zero=query[0];
             int one=query[1];
-            if(check(zero, one)){
+            if(check(one, zero)){
                 res.add(true);
             }
             else{
