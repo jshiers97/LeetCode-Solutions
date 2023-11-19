@@ -8,15 +8,9 @@ class Solution {
         int[] indegree= new int[graph.length];
         
         for(int i=0; i<graph.length; i++){
-            outgoing.put(i, new ArrayList<>()); 
+            
             incoming.put(i, new ArrayList<>()); 
-            for(int j=0; j<graph[i].length; j++){
-                //indegree[graph[i][j]]++;
-                if(graph[i].length==0){
-                    skip.add(i); 
-                }
-                outgoing.get(i).add(graph[i][j]);
-            }
+            
         }
         
         for(int i=0; i<graph.length; i++){
