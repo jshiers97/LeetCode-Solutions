@@ -1,9 +1,8 @@
 class Solution {
     List<Integer> safe=new ArrayList<>(); 
-    Set<Integer> skip=new HashSet<>(); 
-    Set<Integer> not=new HashSet<>(); 
+    
     public List<Integer> eventualSafeNodes(int[][] graph) {
-        Map<Integer, List<Integer>> outgoing=new HashMap<>(); 
+       
         Map<Integer, List<Integer>> incoming=new HashMap<>(); 
         int[] indegree= new int[graph.length];
         
