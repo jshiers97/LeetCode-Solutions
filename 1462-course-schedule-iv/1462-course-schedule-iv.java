@@ -1,58 +1,66 @@
 class Solution {
-    int[] root;
+    Map<Integer, List<Integer>> map=new HashMap<>(); 
     public List<Boolean> checkIfPrerequisite(int numCourses, int[][] prerequisites, int[][] queries) {
-        Map<Integer, List<Integer>> adjList=new HashMap<>(); 
-        this.root=new int[numCourses];
+        int[] indegree=new int[numCourses];
+        List<Set<Integer>> list=new ArrayList<>(); 
+        
         for(int i=0; i<numCourses; i++){
-            adjList.put(i, new ArrayList<>()); 
-            root[i]=i;
-            
+            map.put(i, new ArrayList<>());
+            //list.add(new HashSet<>()); 
         }
-        for(int[] prereq: prerequisites){
-            int first=prereq[0];
-            int second=prereq[1];
-            adjList.get(first).add(second); 
-            
+        for(int i=0; i<prerequisites.length; i++){
+            int[] curr=prerequisites[i];
+            map.get(curr[0]).add(curr[1]);
+            //indegree[curr[1]]++;
         }
+        
+        
+        
+        
         List<Boolean> res=new ArrayList<>(); 
         for(int[] query: queries){
-            int preReq=query[0];
-            int end=query[1];
-            Set<Integer> seen=new HashSet<>();
-            seen.add(preReq); 
-            Queue<Integer> q=new LinkedList<>(); 
-            boolean added=false;
-            q.offer(preReq); 
-            while(!q.isEmpty()){
-                int curr=q.poll(); 
-                
-                List<Integer> neighbors=adjList.get(curr); 
-                for(int neighbor: neighbors){
-                    if(neighbor==end){
-                        res.add(true); 
-                        added=true;
-                        break;
-                        
-                    }
-                    else{
-                        if(!seen.contains(neighbor)){
-                            seen.add(neighbor); 
-                            q.offer(neighbor); 
-                        }
-                    }
-                }
-                if(added){
-                    break;
-                }
+            int zero=query[0];
+            int one=query[1];
+            if(check(zero, one)){
+                res.add(true);
             }
-            if(!added){
-                res.add(false); 
+            else{
+                res.add(false);
+            }
+        }
+        return res;
+    }
+    
+    public boolean check(int zero, int one){
+        Queue<Integer> q=new LinkedList<>(); 
+        Set<Integer> seen=new HashSet<>();
+        seen.add(zero);
+        q.offer(zero);
+        while(!q.isEmpty()){
+            int curr=q.poll();
+           
+            seen.add(curr);
+            if(curr==one){
+                return true;
             }
             
+            else{
+                List<Integer> neighbors= map.get(curr);
+                for(Integer x : neighbors){
+                    if(!seen.contains(x)){
+                        q.offer(x);
+                        seen.add(x);
+                    }
+                    
+                }
+                
+            }
+            
+            
+           
+            
         }
-        return res; 
-        
-        
+        return false;
         
     }
     
