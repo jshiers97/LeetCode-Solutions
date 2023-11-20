@@ -1,55 +1,50 @@
 class Solution {
+    int m;
+    int n;
+    int max=-1; 
+    int[][] DIRECTIONS= new int[][]{ {0,1}, {1,0}, {-1,0}, {0,-1}};
     public int maxDistance(int[][] grid) {
-        int max=-1;
-        int m=grid.length;
-        int n=grid[0].length;
-        int[][] DIRECTIONS=new int[][]{ {0,1}, {1, 0}, {0, -1}, {-1, 0}};
-        Queue<int[]> q=new LinkedList<>();
+        this.m=grid.length;
+        this.n=grid[0].length;
+        Queue<int[]> q=new LinkedList<>(); 
         for(int i=0; i<m; i++){
             for(int j=0; j<n; j++){
                 if(grid[i][j]==1){
-                    grid[i][j]=-1;
                     q.offer(new int[]{i, j});
                 }
-               
             }
         }
-        
+        q.offer(new int[]{-1,-1});
+        int dist=0;
         while(!q.isEmpty()){
+            //System.out.println(set.size()); 
             int[] curr=q.poll(); 
-            int x=curr[0];
-            int y=curr[1];
-            int dist; 
-            if(grid[x][y]==-1){
-                dist=1;
+            if(curr[0]==-1){
+                if(q.size() > 0){
+                    q.offer(new int[]{-1,-1});
+                    dist++;
+                    max=Math.max(max, dist);
+                }
             }
             else{
-                dist=grid[x][y]+1;
-            }
-            for(int[] dir: DIRECTIONS){
-                int r=x+dir[0];
-                int c=y+dir[1];
-                if(r<0 || r>= m || c<0 || c>=n || grid[r][c]==-1){
-                    continue; 
-                }
-                if(grid[r][c]==0){
-                    grid[r][c]=dist;
-                    max=Math.max(max, dist);
-                    q.offer(new int[]{r, c});
-                }
-                else if(grid[r][c] > dist){
-                    
-                    grid[r][c]=dist;
-                    q.offer(new int[]{r, c});
-                    max=Math.max(max, dist);
-                }
+                for(int[] dir : DIRECTIONS){
+                    int r=curr[0]+dir[0];
+                    int c=curr[1] + dir[1];
+                    int[] temp=new int[]{r,c};
+                    if(r>=m || r < 0 || c>=n || c < 0 || grid[r][c]!=0){
+                        continue;
+                    }
                 
+                    else{
+                        q.offer(new int[]{r,c});
+                        grid[r][c]=1; 
+                    }
+                }
             }
         }
-       
         
+        return max;
         
-        
-        return max; 
+    
     }
 }
