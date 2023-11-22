@@ -2,7 +2,7 @@ class Solution {
     public boolean isBipartite(int[][] graph) {
         Set<Integer> a=new HashSet<>(); 
         Set<Integer> b=new HashSet<>(); 
-        Set<Integer> done=new HashSet<>(); 
+        
         Map<Integer, Set<Integer>> map=new HashMap<>(); 
         for(int i=0; i<graph.length; i++){
             int[] g=graph[i];
@@ -15,7 +15,7 @@ class Solution {
         for(int x: graph[0]){
             b.add(x); 
         }
-        //done.add(x); 
+        
         Queue<Integer> q=new LinkedList<>(); 
         for(int i=1; i<graph.length; i++){
             if(a.contains(i)){
