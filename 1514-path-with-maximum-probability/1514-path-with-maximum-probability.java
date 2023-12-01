@@ -1,11 +1,11 @@
 class Solution {
-    class Edge{
+    class Cell{
         int x;
         int y; 
         Double cost;
-        public Edge(int x, int y, Double cost){
+        public Cell(int x, Double cost){
             this.x=x;
-            this.y=y; 
+         
             this.cost=cost; 
             
         }
@@ -29,19 +29,17 @@ class Solution {
             
             adjList.get(dst).add(new Pair<Integer, Double>(src, succProb[i]));
         }
-        PriorityQueue<Edge> pq=new PriorityQueue<Edge>( (x, y) -> y.cost.compareTo(x.cost));
-        for(Pair<Integer, Double> p : adjList.get(start_node)){
-            Integer neighbor=p.getKey(); 
-            
-            probs[neighbor]=p.getValue(); 
-            pq.offer(new Edge(start_node, neighbor, p.getValue()));
-        }
+        PriorityQueue<Cell> pq=new PriorityQueue<Cell>( (x, y) -> y.cost.compareTo(x.cost));
+        pq.offer(new Cell(start_node, 1.0)); 
+        //pq.offer(new Edge(start_node, ))
         while(!pq.isEmpty()){
-            Edge curr=pq.poll(); 
+            Cell curr=pq.poll(); 
             //System.out.println(curr.y); 
-            int start=curr.y; 
+            int start=curr.x; 
             double prob=curr.cost; 
-            //System.out.println(prob); 
+            if(start==end_node){
+                return prob;
+            }
             if(adjList.get(start).size() > 0){
                 for(Pair<Integer, Double> p : adjList.get(start)){
                     Integer neighbor=p.getKey(); 
@@ -49,7 +47,7 @@ class Solution {
                     if(temp > probs[neighbor]){
                         //System.out.println("here");
                         probs[neighbor]=temp;
-                        pq.offer(new Edge(start, neighbor, temp));
+                        pq.offer(new Cell(neighbor,  temp));
                         
                     }
                 }
